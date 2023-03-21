@@ -1,0 +1,125 @@
+commit 392e7c053c407a78064f0910af20457e680c2b03
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:51:23 2023 +0200
+
+    file1 poistettu, file2 nimetty uudelleen
+
+ tiedostoja/file1             | 1 -
+ tiedostoja/{file2 => file22} | 0
+ 2 files changed, 1 deletion(-)
+
+commit a414931241f2cb1f81357729a84626d3587fe154
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:46:09 2023 +0200
+
+    lisätty file1, file2, file3
+
+ tiedostoja/file1 | 1 +
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 1 insertion(+)
+
+commit 96a41f135f3ff18320098d76aff970efe8f48f4e
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:45:07 2023 +0200
+
+    poista tiedostot väärästä hakemistosta
+
+ file1 | 0
+ file2 | 0
+ file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 6b033fb061b599e37c152e7496e359d446a98b11
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:26:13 2023 +0200
+
+    lisätty file1, file2, file3
+
+ file1 | 0
+ file2 | 0
+ file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 4465f6b94df6827d6d54783b75c29cb64713c47d
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:22:01 2023 +0200
+
+    eka.txt, kolmas.txt muutoksia
+
+ eka.txt    | 4 ++--
+ kolmas.txt | 1 +
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+commit 45dde57df58f8e12b4e87e1298a94c8af3c437cc
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:19:28 2023 +0200
+
+    renamed tiedosto.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit ab0064f3555958d4ca9c4e49a8d219dfdb635904
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:17:35 2023 +0200
+
+    poistettu toinen.txt
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 3f1f1bcf5cf3eff166fddb07fa2dfe28ea736c0a
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:16:13 2023 +0200
+
+    tiedosto.txt muutoksia
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 5d15fdd701f05a18c393d692a115e05870a3b2cf
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:14:47 2023 +0200
+
+    tiedosto.txt muutos
+
+ tiedosto.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 8ceb6212d249f4567071ebb4e035c37dbb11677b
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:12:01 2023 +0200
+
+    lisätty stuff
+
+ stuff/testi.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 22cdeeeb045b2fe20059d35329a53831ead12a83
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:10:45 2023 +0200
+
+    lisätty kolmas.txt
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 0094768f1e5896a5d827cc128b576c5feed4cffe
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:09:42 2023 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit b4229c168fc2e19b43bbdca0de5b7fdf5334a480
+Author: jhakkari <juuso.hakkari@helsinki.fi>
+Date:   Tue Mar 21 17:07:17 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
