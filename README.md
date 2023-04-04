@@ -1,15 +1,28 @@
 # Ohjelmistotekniikka, harjoitustyö
 
-## Tehtävät
+## Asennus
 
-### viikko 1
+1. Asenna riippuvuudet komennolla:
 
-[gitlog.txt](https://github.com/jhakkari/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+```bash
+poetry install
+```
 
-[komentorivi.txt](https://github.com/jhakkari/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+2. Alusta tietokanta komennolla:
 
-### Viikko 2
+```bash
+poetry run invoke built
+```
+
+3. Käynnistä sovellus komennolla:
+
+```bash
+poetry run invoke start
+```
+
+## Dokumentaatio
 
 [vaatimusmäärittely](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [työaikakirjanpito](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+[Changelog](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
