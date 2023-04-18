@@ -8,6 +8,8 @@
 
 [Changelog](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
 
+[Arkkitehtuuri](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 
 
 ## Asennus
