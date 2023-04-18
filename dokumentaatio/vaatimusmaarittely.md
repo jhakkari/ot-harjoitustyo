@@ -9,9 +9,9 @@ Sovellusta voi käyttää usealla käyttäjällä, jolloin kaikilla on henkilök
 
 ### Ennen kirjautumista
 
-- Käyttäjä voi luoda sovellukseen uuden käyttäjätunnuksen. Käyttäjätunnuksen ja salasanan pituus väh. 8 merkkiä
-- Sovellukseen kirjautuminen oikeilla tunnuksilla
-- sovellus ilmoittaa, mikäli käyttäjätunnuksen luonnissa tai sisäänkirjautumisessa on virheitä
+- (Valmis) Käyttäjä voi luoda sovellukseen uuden käyttäjätunnuksen. Käyttäjätunnuksen ja salasanan pituus väh. 1 merkki
+- (Valmis) Sovellukseen kirjautuminen oikeilla tunnuksilla
+- (Valmis) sovellus ilmoittaa, mikäli käyttäjätunnuksen luonnissa tai sisäänkirjautumisessa on virheitä
 
 ### Kirjautumisen jälkeen
 
@@ -19,7 +19,7 @@ Sovellusta voi käyttää usealla käyttäjällä, jolloin kaikilla on henkilök
 - Käyttäjä voi tallentaa uuden koodinpätkän
 - Käyttäjä voi kopioida haluamansa koodinpätkän leikepöydälle napin painalluksella
 - Käyttäjä voi poistaa tallentamansa koodinpätkän
-- Käyttäjä voi kirjautua ulos järjestelmästä
+- (Valmis) Käyttäjä voi kirjautua ulos järjestelmästä
 
 ## Jatkokehitysideoita
 

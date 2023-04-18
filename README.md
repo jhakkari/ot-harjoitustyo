@@ -1,5 +1,15 @@
 # Ohjelmistotekniikka, harjoitustyö
 
+## Dokumentaatio
+
+[vaatimusmäärittely](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+
+[Työaikakirjanpito](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+
+[Changelog](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
+
+
+
 ## Asennus
 
 1. Asenna riippuvuudet komennolla:
@@ -20,9 +30,28 @@ poetry run invoke built
 poetry run invoke start
 ```
 
-## Dokumentaatio
+## Komentorivitoiminnot
 
-[vaatimusmäärittely](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+Ohjelman voi suorittaa komennolla:
 
-[työaikakirjanpito](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
-[Changelog](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
+```bash
+poetry run invoke start
+```
+
+Testit suoritetaan komennolla:
+
+```bash
+poetry run invoke test
+```
+
+Testikattavuusraportin voi luoda komennolla:
+
+```bash
+poetry run invoke coverage-report
+```
+
+Koodin laadun voi tarkastaa pylintin avulla, komennolla:
+
+```bash
+poetry run invoke lint
+```
