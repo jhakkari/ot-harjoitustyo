@@ -1,15 +1,15 @@
 from tkinter import ttk, constants, StringVar
-from services.user_service import user_service, UsernameAlreadyExistsError, PasswordsDoNotMatchError, IncorrectInputError
+from services.user_service import user_service, IncorrectInputError, InvalidUserError, IncorrectCredentialsError
 
-class RegisterView:
-    def __init__(self, root, handle_show_login_view, handle_show_main_view):
+class LoginView:
+
+    def __init__(self, root, handle_show_register_view, handle_show_main_view):
         self._root = root
-        self._handle_show_login_view = handle_show_login_view
+        self._handle_show_register_view = handle_show_register_view
         self._handle_show_main_view = handle_show_main_view
         self._frame = None
         self._username_entry = None
         self._password_entry = None
-        self._password_confirmation_entry = None
         self._error_variable = None
         self._error_label = None
 
@@ -28,18 +28,18 @@ class RegisterView:
     def _hide_error(self):
         self.error_label.grid_remove()
 
-    def _handle_register_button_click(self):
+    def _handle_login(self):
         username = self._username_entry.get()
         password = self._password_entry.get()
-        password_confirmation = self._password_confirmation_entry.get()
 
         try:
-            user_service.register(username, password, password_confirmation)
-        except (UsernameAlreadyExistsError, PasswordsDoNotMatchError, IncorrectInputError) as error:
+            user_service.login(username, password)
+        except (IncorrectInputError, IncorrectCredentialsError, InvalidUserError) as error:
             self._show_error(error)
-
+        
         if user_service.login_status():
             self._handle_show_main_view()
+
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
@@ -52,11 +52,11 @@ class RegisterView:
             foreground="red"
         )
 
-        header_label = ttk.Label(master=self._frame, text="Create new user")
+        header_label = ttk.Label(master=self._frame, text="Login")
         header_label.grid(row=0, column=0, columnspan=2, padx=5, pady=5)
 
-        new_username_label = ttk.Label(master=self._frame, text="Username")
-        new_username_label.grid(row=1, column=0, padx=5, pady=5)
+        username_label = ttk.Label(master=self._frame, text="Username")
+        username_label.grid(row=1, column=0, padx=5, pady=5)
 
         self._username_entry = ttk.Entry(master=self._frame)
         self._username_entry.grid(row=1, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
@@ -67,18 +67,13 @@ class RegisterView:
         self._password_entry = ttk.Entry(master=self._frame)
         self._password_entry.grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        confirm_password_label = ttk.Label(master=self._frame, text="Password again")
-        confirm_password_label.grid(row=3, column=0, padx=5, pady=5)
+        self._error_label.grid(row=3, column=0, columnspan=2, padx=5, pady=5)
 
-        self._password_confirmation_entry = ttk.Entry(master=self._frame)
-        self._password_confirmation_entry.grid(row=3, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        self._error_label.grid(row=4, column=0, columnspan=2, padx=5, pady=5)
+        login_button = ttk.Button(master=self._frame, text="Login", command=self._handle_login)
+        login_button.grid(columnspan=4, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        create_new_user_button = ttk.Button(master=self._frame, text="Create user", command=self._handle_register_button_click)
-        create_new_user_button.grid(columnspan=5, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
-
-        back_to_login_button = ttk.Button(master=self._frame, text="Takaisin", command=self._handle_show_login_view)
-        back_to_login_button.grid(columnspan=6, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
+        register_button = ttk.Button(master=self._frame, text="Create new user", command=self._handle_show_register_view)
+        register_button.grid(columnspan=5, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
 
         self._frame.grid_columnconfigure(1, weight=1, minsize=400)
