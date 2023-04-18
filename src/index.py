@@ -1,9 +1,13 @@
-from ui import text_based_ui
-
+from tkinter import Tk
+from ui.ui import UI
 
 def main():
-    text_based_ui.TextBasedUi().start()
+    window = Tk()
+    window.title("Code snippet application")
+    ui_view = UI(window)
+    ui_view.start()
 
+    window.mainloop()
 
 if __name__ == "__main__":
     main()

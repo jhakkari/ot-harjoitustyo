@@ -1,13 +1,27 @@
 from db_connection import get_database_connection
 
-def register(username, password):
-    try:
-        connection = get_database_connection()
-        cursor = connection.cursor()
+class UserRepository:
 
-        cursor.execute("INSERT INTO users VALUES (?, ?)", (username, password))
+    def __init__(self, connection):
+        self._db_connection = connection
+        self._db = self._db_connection.cursor()
 
-        connection.commit()
-    except:
+
+    def create(self, username, password):
+        try:
+            sql = "INSERT INTO users (username, password) VALUES (:username, :password)"
+            self._db.execute(sql, {"username":username, "password":password})
+
+            self._db_connection.commit()
+        except:
+            return False
+        return True
+
+    def check_existing(self, username):
+        sql = ("SELECT * FROM users WHERE username=:username")
+        result = self._db.execute(sql, {"username":username}).fetchone()
+        if result:
+            return True
         return False
-    return True
+
+user_repository = UserRepository(get_database_connection())
