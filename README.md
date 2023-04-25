@@ -23,7 +23,7 @@ poetry install
 2. Alusta tietokanta komennolla:
 
 ```bash
-poetry run invoke built
+poetry run invoke build
 ```
 
 3. Käynnistä sovellus komennolla:

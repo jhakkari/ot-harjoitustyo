@@ -15,9 +15,9 @@ Sovellusta voi käyttää usealla käyttäjällä, jolloin kaikilla on henkilök
 
 ### Kirjautumisen jälkeen
 
-- Käyttäjä näkee sovelluksen etusivulla tallentamansa koodinpätkät
-- Käyttäjä voi tallentaa uuden koodinpätkän
-- Käyttäjä voi kopioida haluamansa koodinpätkän leikepöydälle napin painalluksella
+- (Valmis) Käyttäjä näkee sovelluksen etusivulla tallentamansa koodinpätkät
+- (valmis) Käyttäjä voi tallentaa uuden koodinpätkän
+- (Valmis) Käyttäjä voi kopioida haluamansa koodinpätkän leikepöydälle napin painalluksella
 - Käyttäjä voi poistaa tallentamansa koodinpätkän
 - (Valmis) Käyttäjä voi kirjautua ulos järjestelmästä
 
