@@ -28,6 +28,9 @@ class UserService:
         if self._user_repository.check_existing(username):
             raise UsernameAlreadyExistsError(f"Username {username} already exists")
 
+        if " " in username or " " in password:
+            raise IncorrectInputError("Username or password cannot contain whitespaces")
+
         if password != password_confirmation:
             raise PasswordsDoNotMatchError("Passwords do not match. Try again.")
 
