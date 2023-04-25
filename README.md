@@ -2,7 +2,7 @@
 
 ## Dokumentaatio
 
-[vaatimusmäärittely](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+[Vaatimusmäärittely](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Työaikakirjanpito](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
@@ -10,7 +10,8 @@
 
 [Arkkitehtuuri](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
-
+## Releaset
+[Viikko 5 release](https://github.com/jhakkari/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Asennus
 
@@ -31,6 +32,9 @@ poetry run invoke build
 ```bash
 poetry run invoke start
 ```
+Huom!
+Sovellus käyttää riippuvuutenaan pyperclip moduulia. Tämän pitäisi toimia ongelmitta Windows, Mac ja Linux laitteilla.
+Ongelmatilanteessa lisätietoa [täältä](https://pypi.org/project/pyperclip/)
 
 ## Komentorivitoiminnot
 
