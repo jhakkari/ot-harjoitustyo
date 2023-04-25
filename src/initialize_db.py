@@ -10,6 +10,12 @@ def drop_tables(connection):
 
     connection.commit()
 
+    cursor.execute('''
+        drop table if exists snippets;
+    ''')
+
+    connection.commit()
+
 
 def create_tables(connection):
     cursor = connection.cursor()
@@ -19,6 +25,17 @@ def create_tables(connection):
             id integer primary key,
             username text UNIQUE,
             password text
+        );
+    ''')
+
+    connection.commit()
+
+    cursor.execute('''
+        create table snippets (
+            id integer primary key,
+            user_id integer,
+            content text,
+            created_at datetime
         );
     ''')
 

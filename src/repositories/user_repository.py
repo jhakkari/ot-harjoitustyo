@@ -9,7 +9,7 @@ class UserRepository:
 
     def create(self, username, password):
         try:
-            sql = "INSERT INTO users (username, password) VALUES (:username, :password)"
+            sql = """INSERT INTO users (username, password) VALUES (:username, :password)"""
             self._db.execute(sql, {"username":username, "password":password})
 
             self._db_connection.commit()
@@ -18,14 +18,14 @@ class UserRepository:
         return True
 
     def check_existing(self, username):
-        sql = "SELECT * FROM users WHERE username=:username"
+        sql = """SELECT * FROM users WHERE username=:username"""
         result = self._db.execute(sql, {"username":username}).fetchone()
         if result:
             return True
         return False
 
     def get_user(self, username):
-        sql = "SELECT * FROM users WHERE username=:username"
+        sql = """SELECT * FROM users WHERE username=:username"""
         result = self._db.execute(sql, {"username":username}).fetchone()
         if not result:
             return None

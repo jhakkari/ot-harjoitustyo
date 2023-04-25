@@ -60,6 +60,10 @@ class UserService:
 
     def login_status(self):
         return self._logged_in
-  
+
+    def get_user_id(self):
+        if self.login_status():
+            return self._user.id
+        return 0
 
 user_service = UserService()
