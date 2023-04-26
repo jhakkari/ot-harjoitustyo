@@ -41,10 +41,11 @@ class RegisterView:
         if user_service.login_status():
             self._handle_show_main_view()
 
-    def _initialize(self):
-        self._frame = ttk.Frame(master=self._root)
-
-        self._error_variable = StringVar(self._frame)
+    def _initialize_labels(self):
+        header_label = ttk.Label(master=self._frame, text="Create new user")
+        new_username_label = ttk.Label(master=self._frame, text="Username")
+        password_label = ttk.Label(master=self._frame, text="Password")
+        confirm_password_label = ttk.Label(master=self._frame, text="Password again")
 
         self._error_label = ttk.Label(
             master=self._frame,
@@ -52,33 +53,34 @@ class RegisterView:
             foreground="red"
         )
 
-        header_label = ttk.Label(master=self._frame, text="Create new user")
         header_label.grid(row=0, column=0, columnspan=2, padx=5, pady=5)
-
-        new_username_label = ttk.Label(master=self._frame, text="Username")
         new_username_label.grid(row=1, column=0, padx=5, pady=5)
-
-        self._username_entry = ttk.Entry(master=self._frame)
-        self._username_entry.grid(row=1, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
-
-        password_label = ttk.Label(master=self._frame, text="Password")
         password_label.grid(row=2, column=0, padx=5, pady=5)
-
-        self._password_entry = ttk.Entry(master=self._frame)
-        self._password_entry.grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
-
-        confirm_password_label = ttk.Label(master=self._frame, text="Password again")
         confirm_password_label.grid(row=3, column=0, padx=5, pady=5)
-
-        self._password_confirmation_entry = ttk.Entry(master=self._frame)
-        self._password_confirmation_entry.grid(row=3, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
-
         self._error_label.grid(row=4, column=0, columnspan=2, padx=5, pady=5)
 
-        create_new_user_button = ttk.Button(master=self._frame, text="Create user", command=self._handle_register_button_click)
-        create_new_user_button.grid(columnspan=5, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
+    def _initialize_entry_fields(self):
+        self._username_entry = ttk.Entry(master=self._frame)
+        self._password_entry = ttk.Entry(master=self._frame)
+        self._password_confirmation_entry = ttk.Entry(master=self._frame)
 
+        self._username_entry.grid(row=1, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        self._password_entry.grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        self._password_confirmation_entry.grid(row=3, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+
+    def _initialize_buttons(self):
+        create_new_user_button = ttk.Button(master=self._frame, text="Create user", command=self._handle_register_button_click)
         back_to_login_button = ttk.Button(master=self._frame, text="Takaisin", command=self._handle_show_login_view)
+
+        create_new_user_button.grid(columnspan=5, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
         back_to_login_button.grid(columnspan=6, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
+
+    def _initialize(self):
+        self._frame = ttk.Frame(master=self._root)
+        self._error_variable = StringVar(self._frame)
+
+        self._initialize_labels()
+        self._initialize_entry_fields()
+        self._initialize_buttons()
 
         self._frame.grid_columnconfigure(1, weight=1, minsize=400)
