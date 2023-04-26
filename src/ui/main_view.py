@@ -4,10 +4,11 @@ from services.snippet_service import snippet_service
 import pyperclip
 
 class SnippetListView:
-    def __init__(self, root, snippets, handle_copy_snippet_to_clipboard):
+    def __init__(self, root, snippets, handle_copy_snippet_to_clipboard, handle_remove_snippet):
         self._root = root
         self._snippets = snippets
         self._handle_copy_to_clipboard = handle_copy_snippet_to_clipboard
+        self._handle_remove_sippet = handle_remove_snippet
         self._frame = None
 
         self._initialize()
@@ -32,10 +33,12 @@ class SnippetListView:
         created_at_label = ttk.Label(master=snippet_block_frame, text=f"Added at: {snippet.created_at}")
 
         copy_to_clipboard_button = ttk.Button(master=snippet_block_frame, text="Copy", command=lambda: self._handle_copy_to_clipboard(snippet.content))
+        remove_snippet_button = ttk.Button(master=snippet_block_frame, text="Delete", command=lambda: self._handle_remove_sippet(snippet.id))
 
         content_label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
         created_at_label.grid(row=1, column=0, padx=5, pady=5, sticky=constants.W)
-        copy_to_clipboard_button.grid(row=1, column=2, padx=5, pady=5)
+        copy_to_clipboard_button.grid(row=0, column=1, padx=5, pady=5)
+        remove_snippet_button.grid(row=1, column=1, padx=5, pady=5)
 
         snippet_block_frame.grid_columnconfigure(0, weight=1)
         snippet_block_frame.pack(fill=constants.X)
@@ -85,11 +88,16 @@ class MainView:
         pyperclip.copy(snippet)
         self._show_action_feedback("Copied to clipboard!")
 
+    def _handle_remove_snippet(self, snippet_id):
+        snippet_service.remove(snippet_id)
+        self._initialize_snippet_list()
+        self._show_action_feedback("Snippet removed")
+
     def _initialize_snippet_list(self):
         if self._snippet_list_view:
             self._snippet_list_view.destroy()
 
-        self._snippet_list_view = SnippetListView(self._snippet_list_frame, snippet_service.get_snippets_list(), self._handle_copy_snippet_to_clipboard)
+        self._snippet_list_view = SnippetListView(self._snippet_list_frame, snippet_service.get_snippets_list(), self._handle_copy_snippet_to_clipboard, self._handle_remove_snippet)
         self._snippet_list_view.pack()
 
     def _initialize_action_feedback_area(self):

@@ -15,6 +15,15 @@ class SnippetRepository:
             return False
         return True
 
+    def delete(self, id):
+        try:
+            sql = """DELETE FROM snippets WHERE id=:id"""
+            self._db.execute(sql, {"id":id})
+            self._db.connection.commit()
+        except:
+            return False
+        return True
+
     def get_all(self, user_id):
         sql = """SELECT id, user_id, content, created_at FROM snippets WHERE user_id=:user_id"""
         results = self._db.execute(sql, {"user_id":user_id}).fetchall()

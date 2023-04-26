@@ -5,7 +5,6 @@ from entities.snippet import Snippet
 class InvalidInputError(Exception):
     pass
 
-
 class CodeSnippetService:
 
     def __init__(self):
@@ -28,5 +27,8 @@ class CodeSnippetService:
             snippets.append(Snippet(row[0], row[1], row[2], row[3]))
 
         return snippets
+
+    def remove(self, snippet_id):
+        return snippet_repository.delete(snippet_id)
 
 snippet_service = CodeSnippetService()
