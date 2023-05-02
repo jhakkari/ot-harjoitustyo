@@ -14,3 +14,7 @@
 - Tallennetut koodinpätkät näkyvät sovelluksen etusivulla
 - Laajennettu alustavan käyttöliittymän versiota
 - Ulkoinen kirjasto pyperclip otettu käyttöön
+
+### Viikko 6
+- Käyttöliittymän koodin selkeyttämistä
+- Käyttäjä voi poistaa tallentamiaan koodinpätkiä

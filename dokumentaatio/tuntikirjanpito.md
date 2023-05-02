@@ -9,4 +9,5 @@
 | 18.4. | 6    | Tkinterin opettelua, sisäänkirjautumisen toteutus |
 | 24.4. | 5    | Uuden koodinpätkän lisääminen, automaattinen kopiointi |
 | 25.4. | 6    | Tkinterin opettelua, käyttöliittymän rakennus |
-| yht.  | 32   | |
+| 28.4. | 5    | Käyttöliittymän koodin selkeyttäminen, koodinpätkien poistaminen |
+| yht.  | 37   | |
