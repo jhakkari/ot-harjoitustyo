@@ -18,6 +18,8 @@ class IncorrectCredentialsError(Exception):
 
 
 class UserService:
+    """Käyttäjien hallintaan liittyvästä logiikasta vastaava luokka.
+    """
 
     def __init__(self):
         self._user_repository = user_repository
@@ -25,6 +27,21 @@ class UserService:
         self._logged_in = False
 
     def register(self, username, password, password_confirmation):
+        """Luo uuden käyttäjän ja kirjaa sen sisään.
+
+        Args:
+            username: Uuden käyttäjän käyttäjätunnus.
+            password: Uuden käyttäjän salasana.
+            password_confirmation: Salasanan varmistus.
+
+        Raises:
+            UsernameAlreadyExistsError: Virhe, tapahtuu kun käyttäjätunnus on jo käytössä.
+            IncorrectInputError: Virhe, tapahtuu kun annetut tiedot eivät vastaa niiden vaatimuksia.
+            PasswordsDoNotMatchError: Virhe, tapahtuu kun annetut salasanat eivät vastaa toisiaan.
+            IncorrectInputError: Virhe, tapahtuu kun annetut tiedot ovat tyhjiä tai liian pitkiä.
+            IncorrectInputError: Virhe, tapahtuu kun annetut tiedot sisältävät välilyöntejä.
+
+        """
         if self._user_repository.check_existing(username):
             raise UsernameAlreadyExistsError(f"Username {username} already exists")
 
@@ -44,6 +61,17 @@ class UserService:
         self.login(username, password)
 
     def login(self, username, password):
+        """Kirjaa käyttäjän sisään.
+
+        Args:
+            username: Kirjautuvan käyttäjän käyttäjätunnus.
+            password: Kirjautuvan käyttäjän salasana.
+
+        Raises:
+            IncorrectInputError: Virhe, tapahtuu kun annetut tiedot eivät sisällä mitään.
+            InvalidUserError: Virhe, tapahtuu kun käyttäjää ei ole olemassa.
+            IncorrectCredentialsError: Virhe, tapahtuu kun kirjautuminen ei onnistu.
+        """
         if len(username) < 1 or len(password) < 1:
             raise IncorrectInputError("Please fill all the fields.")
 
@@ -58,13 +86,25 @@ class UserService:
         self._logged_in = True
 
     def logout(self):
+        """Kirjaa käyttäjän ulos.
+        """
         self._user = None
         self._logged_in = False
 
     def login_status(self):
+        """Palauttaa tiedon, onko käyttäjä kirjautunut sisään.
+
+        Returns:
+            True mikäli on, muussa tapauksessa False.
+        """
         return self._logged_in
 
     def get_user_id(self):
+        """Palauttaa kirjautuneen käyttäjän yksilöivän id-tunnisteen.
+
+        Returns:
+            int: 0 mikäli ei kirjautunut, muussa tapauksessa > 0.
+        """
         if self.login_status():
             return self._user.id
         return 0
