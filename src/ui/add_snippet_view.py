@@ -60,7 +60,8 @@ class AddSnippetView:
 
     def _initialize_snippet_content_textbox(self):
         self._snippet_content_textbox = Text(master=self._frame)
-        self._snippet_content_textbox.insert("end-1c", pyperclip.paste())
+        self._snippet_content_textbox.insert("end-1c", snippet_service.get_clipboard_contents())
+        self._show_action_feedback("Text copied from your clipboard")
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
@@ -76,7 +77,5 @@ class AddSnippetView:
         self._frame.rowconfigure(0, minsize=400, weight=1)
         self._frame.rowconfigure(1, minsize=30, weight=0)
         self._frame.columnconfigure(1, minsize=400, weight=1)
-
-        self._show_action_feedback("Text copied from your clipboard")
 
 

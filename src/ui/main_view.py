@@ -1,6 +1,6 @@
 from tkinter import ttk, constants, StringVar
 from services.user_service import user_service
-from services.snippet_service import snippet_service
+from services.snippet_service import snippet_service, SnippetCopiedToClipboard
 import pyperclip
 
 class SnippetListView:
@@ -85,8 +85,10 @@ class MainView:
         self._handle_show_login_view()
 
     def _handle_copy_snippet_to_clipboard(self, snippet):
-        pyperclip.copy(snippet)
-        self._show_action_feedback("Copied to clipboard!")
+        try:
+            snippet_service.set_clipboard_contents(snippet)
+        except SnippetCopiedToClipboard as message:
+            self._show_action_feedback(message)
 
     def _handle_remove_snippet(self, snippet_id):
         snippet_service.remove(snippet_id)

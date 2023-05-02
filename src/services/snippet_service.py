@@ -1,8 +1,12 @@
+import pyperclip
 from repositories.snippet_repository import snippet_repository
 from services.user_service import user_service
 from entities.snippet import Snippet
 
 class InvalidInputError(Exception):
+    pass
+
+class SnippetCopiedToClipboard(Exception):
     pass
 
 class CodeSnippetService:
@@ -30,5 +34,13 @@ class CodeSnippetService:
 
     def remove(self, snippet_id):
         return snippet_repository.delete(snippet_id)
+
+    def set_clipboard_contents(self, snippet):
+        pyperclip.copy(snippet)
+
+        raise SnippetCopiedToClipboard("Copied to clipboard")
+
+    def get_clipboard_contents(self):
+        return pyperclip.paste()
 
 snippet_service = CodeSnippetService()
