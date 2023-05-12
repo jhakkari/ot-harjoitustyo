@@ -33,7 +33,7 @@ class SnippetListView:
         created_at_label = ttk.Label(master=snippet_block_frame, text=f"Added at: {snippet.created_at}")
 
         copy_to_clipboard_button = ttk.Button(master=snippet_block_frame, text="Copy", command=lambda: self._handle_copy_to_clipboard(snippet.content))
-        remove_snippet_button = ttk.Button(master=snippet_block_frame, text="Delete", command=lambda: self._handle_remove_sippet(snippet.id))
+        remove_snippet_button = ttk.Button(master=snippet_block_frame, text="Delete", command=lambda: self._handle_remove_sippet(snippet.snippet_id))
 
         content_label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
         created_at_label.grid(row=1, column=0, padx=5, pady=5, sticky=constants.W)

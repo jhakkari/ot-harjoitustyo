@@ -106,7 +106,7 @@ class UserService:
             int: 0 mikäli ei kirjautunut, muussa tapauksessa > 0.
         """
         if self.login_status():
-            return self._user.id
+            return self._user.user_id
         return 0
 
 user_service = UserService()

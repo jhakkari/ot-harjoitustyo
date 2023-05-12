@@ -31,7 +31,7 @@ class SnippetRepository:
             return False
         return True
 
-    def delete(self, id):
+    def delete(self, snippet_id):
         """Poistaa koodinpätkän tietokannasta.
 
         Args:
@@ -42,7 +42,7 @@ class SnippetRepository:
         """
         try:
             sql = """DELETE FROM snippets WHERE id=:id"""
-            self._db.execute(sql, {"id":id})
+            self._db.execute(sql, {"id":snippet_id})
             self._db.connection.commit()
         except:
             return False

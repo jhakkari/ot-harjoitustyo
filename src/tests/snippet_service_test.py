@@ -23,7 +23,7 @@ class TestCodeSnippetService(unittest.TestCase):
         results = snippet_service.get_snippets_list()
         self.assertEqual(len(results), 3)
         self.assertEqual(results[0].content, "Another test")
-        self.assertEqual(results[0].id, 1)
+        self.assertEqual(results[0].snippet_id, 1)
         self.assertEqual(results[0].user_id, 1)
         self.assertEqual(results[1].content, "Second snippet")
         self.assertEqual(results[2].content, "One more test")

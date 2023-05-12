@@ -2,15 +2,15 @@ class User:
     """Luokka, joka kuvaa yksittäistä käyttäjää.
     """
 
-    def __init__(self, id, username, password):
+    def __init__(self, user_id, username, password):
         """Luokan konstruktori, joka luo uuden käyttäjän.
 
         Args:
-            id (int): Käyttäjän yksilöivä tunniste
+            user_id (int): Käyttäjän yksilöivä tunniste
             username (String): Käyttäjän käyttäjätunnus
             password (String): Käyttäjän salasana.
         """
 
-        self.id = id
+        self.user_id = user_id
         self.username = username
         self.password = password
