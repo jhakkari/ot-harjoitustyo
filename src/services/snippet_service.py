@@ -62,6 +62,9 @@ class CodeSnippetService:
         """
         return snippet_repository.delete(snippet_id)
 
+    def remove_all_user_snippets(self):
+        return self._snippet_repository.delete_all(self._user_service.get_user_id())
+
     def set_clipboard_contents(self, snippet):
         """Lisää koodinpätkän käyttäjän tietokoneen leikepöydälle.
 

@@ -64,4 +64,10 @@ class UserRepository:
             return None
         return result
 
+    def delete(self, user_id):
+        sql = """DELETE FROM users WHERE id=:user_id"""
+        self._db.execute(sql, {"user_id":user_id})
+        self._db.connection.commit()
+        return True
+
 user_repository = UserRepository(get_database_connection())

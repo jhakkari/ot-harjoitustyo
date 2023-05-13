@@ -109,4 +109,8 @@ class UserService:
             return self._user.user_id
         return 0
 
+    def delete_user_account(self):
+        self._user_repository.delete(self._user.user_id)
+        self.logout()
+
 user_service = UserService()

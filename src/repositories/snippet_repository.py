@@ -8,7 +8,7 @@ class SnippetRepository:
         """Luokan konstruktori. Luo saamastaan tietokantayhteydestä cursor-olion.
 
         Args:
-            connection: Tietokantayhteyden connection-olio..
+            connection: Tietokantayhteyden connection-olio.
         """
         self._db_connection = connection
         self._db = self._db_connection.cursor()
@@ -62,6 +62,12 @@ class SnippetRepository:
         if not results:
             return None
         return results
+
+    def delete_all(self, user_id):
+        sql = """DELETE FROM snippets WHERE user_id=:user_id"""
+        self._db.execute(sql, {"user_id":user_id})
+        self._db.connection.commit()
+        return True
 
 
 snippet_repository = SnippetRepository(get_database_connection())

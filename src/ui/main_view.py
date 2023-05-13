@@ -53,10 +53,11 @@ class SnippetListView:
                 self._initialize_snippet_block(snippet)
 
 class MainView:
-    def __init__(self, root, handle_show_login_view, handle_show_add_snippet_view):
+    def __init__(self, root, handle_show_login_view, handle_show_add_snippet_view, handle_show_settings_view):
         self._root = root
         self._handle_show_login_view = handle_show_login_view
         self._handle_show_add_snippet_view = handle_show_add_snippet_view
+        self._handle_show_settings_view = handle_show_settings_view
         self._frame = None
         self._action_feedback_variable = None
         self._action_feedback_frame = None
@@ -115,9 +116,11 @@ class MainView:
     def _initialize_action_buttons(self):
         logout_button = ttk.Button(self._action_buttons_frame, text="Logout", command=self._handle_logout)
         add_snippet_button = ttk.Button(self._action_buttons_frame, text="Add snippet", command=self._handle_show_add_snippet_view)
+        settings_button = ttk.Button(self._action_buttons_frame, text="Settings", command=self._handle_show_settings_view)
 
         logout_button.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
         add_snippet_button.grid(row=1, column=0,sticky="ew", padx=5, pady=5)
+        settings_button.grid(row=2, column=0, sticky="ew", padx=5, pady=5)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
