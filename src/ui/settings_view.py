@@ -61,13 +61,16 @@ class SettingsView:
         header_label = ttk.Label(
             master=self._settings_frame, text="Delete account and data")
         delete_info_label = ttk.Label(
-            master=self._settings_frame, text="This action will:\nDelete all your saved snippets\nDelete your account\nLogout of this application.")
+            master=self._settings_frame, text="This action will:")
+        delete_warning_label = ttk.Label(
+            master=self._settings_frame, text="Permanently delete your account and all data. You will be logged out.")
         delete_all_button = ttk.Button(
             master=self._settings_frame, text="Delete account", command=self._handle_delete_user_and_data)
 
         header_label.grid(row=0, column=0, sticky="ns", padx=5, pady=5)
         delete_all_button.grid(row=2, column=0, sticky="ns", padx=5, pady=5)
         delete_info_label.grid(row=4, column=0, sticky="ns", padx=5, pady=5)
+        delete_warning_label.grid(row=5, column=0, sticky="ns", padx=5, pady=5)
 
     def _initialize(self):
         """Alustaa ja asettelee koko näkymän.
