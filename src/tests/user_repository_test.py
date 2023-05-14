@@ -26,4 +26,3 @@ class TestUserRepository(unittest.TestCase):
     def test_nonexisting_user_not_found_on_db(self):
         result = user_repository.check_existing("testikayttaja")
         self.assertFalse(result)
-

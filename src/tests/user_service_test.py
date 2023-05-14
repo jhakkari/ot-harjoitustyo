@@ -32,10 +32,11 @@ class TestUserService(unittest.TestCase):
         )
 
     def test_register_with_too_long_username_amd_password_fails(self):
-            self.assertRaises(
+        self.assertRaises(
             IncorrectInputError,
-            lambda: self.user_service.register("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "11111111111111111111111111111", "11111111111111111111111111111")
-            )
+            lambda: self.user_service.register(
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "11111111111111111111111111111", "11111111111111111111111111111")
+        )
 
     def test_login_with_correct_username_and_password_succeeds(self):
         self.user_service.register("testuser", "password", "password")
@@ -43,7 +44,7 @@ class TestUserService(unittest.TestCase):
         self.user_service.login("testuser", "password")
         status = self.user_service.login_status()
         self.assertTrue(status)
-    
+
     def test_logout_succeeds(self):
         self.user_service.register("testuser", "password", "password")
         self.assertTrue(self.user_service.login_status())

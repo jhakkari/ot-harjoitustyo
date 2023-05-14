@@ -4,17 +4,20 @@ from services.user_service import user_service
 from entities.snippet import Snippet
 from initialize_db import initialize_database
 
+
 class TestCodeSnippetService(unittest.TestCase):
     def setUp(self):
         self.db = initialize_database()
         user_service.register("testikayttaja", "testi123", "testi123")
 
     def test_create_new_snippet_succeeds(self):
-        result = snippet_service.create_new("SELECT id, user_id, content, created_at FROM")
+        result = snippet_service.create_new(
+            "SELECT id, user_id, content, created_at FROM")
         self.assertTrue(result)
 
     def test_create_new_blank_snippet_fails(self):
-        self.assertRaises(InvalidInputError, lambda: snippet_service.create_new(""))
+        self.assertRaises(InvalidInputError,
+                          lambda: snippet_service.create_new(""))
 
     def test_get_snippets_list_returns_correct_list_of_objects(self):
         snippet_service.create_new("Another test")
