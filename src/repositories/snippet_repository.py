@@ -10,6 +10,7 @@ class SnippetRepository:
         Args:
             connection: Tietokantayhteyden connection-olio.
         """
+
         self._db_connection = connection
         self._db = self._db_connection.cursor()
 
@@ -23,6 +24,7 @@ class SnippetRepository:
         Returns:
             True tallentamisen onnistuessa, muussa tapauksessa False.
         """
+
         try:
             sql = """INSERT INTO snippets (user_id, content, created_at) VALUES (:user_id, :content, DATETIME('now'))"""
             self._db.execute(sql, {"user_id":user_id, "content":content})
@@ -40,6 +42,7 @@ class SnippetRepository:
         Returns:
             True poistamisen onnistuessa, muussa tapauksessa False.
         """
+
         try:
             sql = """DELETE FROM snippets WHERE id=:id"""
             self._db.execute(sql, {"id":snippet_id})
@@ -57,6 +60,7 @@ class SnippetRepository:
         Returns:
             Lista koodinpätkistä tietokantariveinä. Muussa tapauksessa None.
         """
+
         sql = """SELECT id, user_id, content, created_at FROM snippets WHERE user_id=:user_id ORDER BY created_at DESC"""
         results = self._db.execute(sql, {"user_id":user_id}).fetchall()
         if not results:
@@ -64,6 +68,15 @@ class SnippetRepository:
         return results
 
     def delete_all(self, user_id):
+        """Poistaa kaikki käyttäjän luomat koodinpätkät tietokannasta.
+
+        Args:
+            user_id: Käyttäjän yksilöivä tunniste, jonka koodinpätkät poistetaan.
+
+        Returns:
+            Palauttaa True
+        """
+
         sql = """DELETE FROM snippets WHERE user_id=:user_id"""
         self._db.execute(sql, {"user_id":user_id})
         self._db.connection.commit()

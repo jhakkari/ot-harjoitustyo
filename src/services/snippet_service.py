@@ -29,6 +29,7 @@ class CodeSnippetService:
         Returns:
             True luomisen onnistuessa, muussa tapauksessa False.
         """
+
         if not content:
             raise InvalidInputError("Nothing to add")
 
@@ -41,6 +42,7 @@ class CodeSnippetService:
             Palauttaa kirjautuneen käyttäjän tallentamat koodinpätkät Snippet-olioiden listana.
             Mikäli ei tallennettuja, palauttaa None.
         """
+
         results = self._snippet_repository.get_all(self._user_service.get_user_id())
         if not results:
             return None
@@ -60,9 +62,16 @@ class CodeSnippetService:
         Returns:
             True poistamisen onnistuessa, muussa tapauksessa False.
         """
+
         return snippet_repository.delete(snippet_id)
 
     def remove_all_user_snippets(self):
+        """Poistaa kirjautuneen käyttäjän koodinpätkät.
+
+        Returns:
+            Palauttaa True
+        """
+
         return self._snippet_repository.delete_all(self._user_service.get_user_id())
 
     def set_clipboard_contents(self, snippet):
@@ -74,6 +83,7 @@ class CodeSnippetService:
         Raises:
             SnippetCopiedToClipboard: Virhe, (tai ilmoitus) toteutuneesta lisäämisestä.
         """
+
         pyperclip.copy(snippet)
 
         raise SnippetCopiedToClipboard("Copied to clipboard")
@@ -84,6 +94,7 @@ class CodeSnippetService:
         Returns:
             Käyttäjän leikepöydän sisältö tekstimuodossa.
         """
+
         return pyperclip.paste()
 
 snippet_service = CodeSnippetService()

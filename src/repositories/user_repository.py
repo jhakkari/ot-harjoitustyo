@@ -10,6 +10,7 @@ class UserRepository:
         Args:
             connection: Tietokantayhteyden connection-olio.
         """
+
         self._db_connection = connection
         self._db = self._db_connection.cursor()
 
@@ -43,6 +44,7 @@ class UserRepository:
         Returns:
             True, mikäli käyttäjä löytyy, muussa tapauksessa False.
         """
+
         sql = """SELECT * FROM users WHERE username=:username"""
         result = self._db.execute(sql, {"username":username}).fetchone()
         if result:
@@ -58,6 +60,7 @@ class UserRepository:
         Returns:
             Tietokantarivi, jossa käyttäjän id, käyttäjätunnus ja salasana. Muussa tapauksessa None.
         """
+
         sql = """SELECT * FROM users WHERE username=:username"""
         result = self._db.execute(sql, {"username":username}).fetchone()
         if not result:
@@ -65,6 +68,15 @@ class UserRepository:
         return result
 
     def delete(self, user_id):
+        """Poistaa käyttäjän tietokannasta.
+
+        Args:
+            user_id: poistettavan käyttäjän yksilöivä tunniste.
+
+        Returns:
+            Palauttaa True
+        """
+
         sql = """DELETE FROM users WHERE id=:user_id"""
         self._db.execute(sql, {"user_id":user_id})
         self._db.connection.commit()

@@ -42,6 +42,7 @@ class UserService:
             IncorrectInputError: Virhe, tapahtuu kun annetut tiedot sisältävät välilyöntejä.
 
         """
+
         if self._user_repository.check_existing(username):
             raise UsernameAlreadyExistsError(f"Username {username} already exists")
 
@@ -72,6 +73,7 @@ class UserService:
             InvalidUserError: Virhe, tapahtuu kun käyttäjää ei ole olemassa.
             IncorrectCredentialsError: Virhe, tapahtuu kun kirjautuminen ei onnistu.
         """
+
         if len(username) < 1 or len(password) < 1:
             raise IncorrectInputError("Please fill all the fields.")
 
@@ -88,6 +90,7 @@ class UserService:
     def logout(self):
         """Kirjaa käyttäjän ulos.
         """
+
         self._user = None
         self._logged_in = False
 
@@ -97,6 +100,7 @@ class UserService:
         Returns:
             True mikäli on, muussa tapauksessa False.
         """
+
         return self._logged_in
 
     def get_user_id(self):
@@ -105,11 +109,15 @@ class UserService:
         Returns:
             int: 0 mikäli ei kirjautunut, muussa tapauksessa > 0.
         """
+
         if self.login_status():
             return self._user.user_id
         return 0
 
     def delete_user_account(self):
+        """Poistaa kirjautuneen käyttäjän tunnuksen. Kirjautuu ulos.
+        """
+
         self._user_repository.delete(self._user.user_id)
         self.logout()
 
