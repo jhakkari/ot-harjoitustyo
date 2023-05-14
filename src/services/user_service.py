@@ -1,17 +1,22 @@
 from repositories.user_repository import user_repository
 from entities.user import User
 
+
 class UsernameAlreadyExistsError(Exception):
     pass
+
 
 class PasswordsDoNotMatchError(Exception):
     pass
 
+
 class IncorrectInputError(Exception):
     pass
 
+
 class InvalidUserError(Exception):
     pass
+
 
 class IncorrectCredentialsError(Exception):
     pass
@@ -44,13 +49,16 @@ class UserService:
         """
 
         if self._user_repository.check_existing(username):
-            raise UsernameAlreadyExistsError(f"Username {username} already exists")
+            raise UsernameAlreadyExistsError(
+                f"Username {username} already exists")
 
         if " " in username or " " in password:
-            raise IncorrectInputError("Username or password cannot contain whitespaces")
+            raise IncorrectInputError(
+                "Username or password cannot contain whitespaces")
 
         if password != password_confirmation:
-            raise PasswordsDoNotMatchError("Passwords do not match. Try again.")
+            raise PasswordsDoNotMatchError(
+                "Passwords do not match. Try again.")
 
         if len(username) < 1 or len(password) < 1:
             raise IncorrectInputError("Please fill all the fields.")
@@ -120,5 +128,6 @@ class UserService:
 
         self._user_repository.delete(self._user.user_id)
         self.logout()
+
 
 user_service = UserService()

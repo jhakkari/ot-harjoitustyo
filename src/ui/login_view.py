@@ -1,9 +1,10 @@
 from tkinter import ttk, constants, StringVar
 from services.user_service import user_service, IncorrectInputError, InvalidUserError, IncorrectCredentialsError
 
+
 class LoginView:
     """Käyttäjän sisäänkirjautumisesta vastaava näkymä.
-    """    
+    """
 
     def __init__(self, root, handle_show_register_view, handle_show_main_view):
         """Luokan konstruktori. Luo sisäänkirjautumisnäkymän.
@@ -13,7 +14,7 @@ class LoginView:
             handle_show_register_view: Kutsutaan, kun halutaan siirtyä rekisteröitymisnäkymään.
             handle_show_main_view: Kutsutaan, kun halutaan siirtuä sovelluksen etusivulle.
         """
-  
+
         self._root = root
         self._handle_show_register_view = handle_show_register_view
         self._handle_show_main_view = handle_show_main_view
@@ -34,7 +35,7 @@ class LoginView:
     def destroy(self):
         """TKinter-toiminnallisuus. Tuhoaa näkymän.
         """
-     
+
         self._frame.destroy()
 
     def _show_error(self, error_message):
@@ -42,7 +43,7 @@ class LoginView:
 
         Args:
             error_message: Näytettävä virheilmoitus.
-        """        
+        """
         self._error_variable.set(error_message)
         self._error_label.grid()
 
@@ -60,7 +61,7 @@ class LoginView:
             user_service.login(username, password)
         except (IncorrectInputError, IncorrectCredentialsError, InvalidUserError) as error:
             self._show_error(error)
-        
+
         if user_service.login_status():
             self._handle_show_main_view()
 
@@ -89,18 +90,24 @@ class LoginView:
         self._username_entry = ttk.Entry(master=self._frame)
         self._password_entry = ttk.Entry(master=self._frame)
 
-        self._username_entry.grid(row=1, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
-        self._password_entry.grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        self._username_entry.grid(row=1, column=1, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
+        self._password_entry.grid(row=2, column=1, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
 
     def _initialize_buttons(self):
         """Alustaa näkymän painikkeet.
         """
 
-        login_button = ttk.Button(master=self._frame, text="Login", command=self._handle_login)
-        register_button = ttk.Button(master=self._frame, text="Create new user", command=self._handle_show_register_view)
+        login_button = ttk.Button(
+            master=self._frame, text="Login", command=self._handle_login)
+        register_button = ttk.Button(
+            master=self._frame, text="Create new user", command=self._handle_show_register_view)
 
-        login_button.grid(columnspan=4, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
-        register_button.grid(columnspan=5, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
+        login_button.grid(columnspan=4, column=0, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
+        register_button.grid(columnspan=5, column=0, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
 
     def _initialize(self):
         """Alustaa näkymän kaikki elementit.

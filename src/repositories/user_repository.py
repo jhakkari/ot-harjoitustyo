@@ -1,3 +1,4 @@
+import sqlite3
 from db_connection import get_database_connection
 
 class UserRepository:
@@ -14,7 +15,6 @@ class UserRepository:
         self._db_connection = connection
         self._db = self._db_connection.cursor()
 
-
     def create(self, username, password):
         """Tallentaa käyttäjätiedot tietokantaan.
 
@@ -28,10 +28,10 @@ class UserRepository:
 
         try:
             sql = """INSERT INTO users (username, password) VALUES (:username, :password)"""
-            self._db.execute(sql, {"username":username, "password":password})
+            self._db.execute(sql, {"username": username, "password": password})
 
             self._db_connection.commit()
-        except:
+        except sqlite3.DatabaseError:
             return False
         return True
 
@@ -46,7 +46,7 @@ class UserRepository:
         """
 
         sql = """SELECT * FROM users WHERE username=:username"""
-        result = self._db.execute(sql, {"username":username}).fetchone()
+        result = self._db.execute(sql, {"username": username}).fetchone()
         if result:
             return True
         return False
@@ -62,7 +62,7 @@ class UserRepository:
         """
 
         sql = """SELECT * FROM users WHERE username=:username"""
-        result = self._db.execute(sql, {"username":username}).fetchone()
+        result = self._db.execute(sql, {"username": username}).fetchone()
         if not result:
             return None
         return result
@@ -78,8 +78,9 @@ class UserRepository:
         """
 
         sql = """DELETE FROM users WHERE id=:user_id"""
-        self._db.execute(sql, {"user_id":user_id})
+        self._db.execute(sql, {"user_id": user_id})
         self._db.connection.commit()
         return True
+
 
 user_repository = UserRepository(get_database_connection())

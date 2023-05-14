@@ -3,11 +3,14 @@ from repositories.snippet_repository import snippet_repository
 from services.user_service import user_service
 from entities.snippet import Snippet
 
+
 class InvalidInputError(Exception):
     pass
 
+
 class SnippetCopiedToClipboard(Exception):
     pass
+
 
 class CodeSnippetService:
     """Koodinpätkien hallintaan liittyvästä logiikasta vastaava luokka.
@@ -43,7 +46,8 @@ class CodeSnippetService:
             Mikäli ei tallennettuja, palauttaa None.
         """
 
-        results = self._snippet_repository.get_all(self._user_service.get_user_id())
+        results = self._snippet_repository.get_all(
+            self._user_service.get_user_id())
         if not results:
             return None
 
@@ -96,5 +100,6 @@ class CodeSnippetService:
         """
 
         return pyperclip.paste()
+
 
 snippet_service = CodeSnippetService()

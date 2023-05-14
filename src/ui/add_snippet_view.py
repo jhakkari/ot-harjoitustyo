@@ -2,6 +2,7 @@ from tkinter import ttk, constants, StringVar, Text
 from services.snippet_service import snippet_service, InvalidInputError
 import pyperclip
 
+
 class AddSnippetView:
     """Uuden koodinpätkän lisäämisestä vastaava näkymä.
     """
@@ -12,7 +13,7 @@ class AddSnippetView:
         Args:
             root: Tkinter-elementti. Näkymä alustetaan tämän sisään.
             handle_show_main_view: Kutsutaan, kun halutaan siirtyä takaisin etusivulle.
-        """        
+        """
         self._root = root
         self._handle_show_main_view = handle_show_main_view
         self._frame = None
@@ -26,12 +27,12 @@ class AddSnippetView:
 
     def pack(self):
         """Tkinter toiminnallisuus. Näyttää näkymän.
-        """        
+        """
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
         """TKinter toiminnallisuus. tuhoaa näkymän.
-        """        
+        """
         self._frame.destroy()
 
     def _show_action_feedback(self, message):
@@ -39,7 +40,7 @@ class AddSnippetView:
 
         Args:
             message: Näytettävä palaute.
-        """        
+        """
         self._action_feedback_variable.set(message)
         self._action_feedback_label.grid()
 
@@ -48,8 +49,8 @@ class AddSnippetView:
 
     def _handle_add_snippet(self):
         """Koodinpätkän lisäämisen tapahtumankäsittelijä. Onnistuneen tallentamisen jälkeen siirtää sovelluksen etusivulle.
-        """        
-        content = self._snippet_content_textbox.get("1.0",'end-1c')
+        """
+        content = self._snippet_content_textbox.get("1.0", 'end-1c')
         try:
             snippet_service.create_new(content)
         except InvalidInputError as error:
@@ -63,7 +64,7 @@ class AddSnippetView:
 
     def _initialize_action_feedback_area(self):
         """Alustaa käyttäjän toiminnasta/aiheutuneista virheistä palautetta antavan alueen.
-        """        
+        """
         self._action_feedback_frame = ttk.Frame(master=self._frame)
         self._action_feedback_variable = StringVar(self._action_feedback_frame)
         self._action_feedback_label = ttk.Label(
@@ -74,24 +75,27 @@ class AddSnippetView:
 
     def _initialize_action_buttons(self):
         """Alustaa näkymän vasemmassa laidassa olevat napit.
-        """        
+        """
         self._action_buttons_frame = ttk.Frame(master=self._frame)
-        save_snippet_button = ttk.Button(self._action_buttons_frame, text="Save", command=self._handle_add_snippet)
-        back_to_main_button = ttk.Button(self._action_buttons_frame, text="Cancel", command=self._handle_show_main_view)
+        save_snippet_button = ttk.Button(
+            self._action_buttons_frame, text="Save", command=self._handle_add_snippet)
+        back_to_main_button = ttk.Button(
+            self._action_buttons_frame, text="Cancel", command=self._handle_show_main_view)
 
         save_snippet_button.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
         back_to_main_button.grid(row=1, column=0, sticky="ew", padx=5)
 
     def _initialize_snippet_content_textbox(self):
         """Alustaa tekstikentän, johon lisättävä koodinpätkä syötetään.
-        """        
+        """
         self._snippet_content_textbox = Text(master=self._frame)
-        self._snippet_content_textbox.insert("end-1c", snippet_service.get_clipboard_contents())
+        self._snippet_content_textbox.insert(
+            "end-1c", snippet_service.get_clipboard_contents())
         self._show_action_feedback("Text copied from your clipboard")
 
     def _initialize(self):
         """Alustaa ja asettelee koko näkymän.
-        """        
+        """
         self._frame = ttk.Frame(master=self._root)
 
         self._initialize_action_feedback_area()
@@ -105,5 +109,3 @@ class AddSnippetView:
         self._frame.rowconfigure(0, minsize=400, weight=1)
         self._frame.rowconfigure(1, minsize=30, weight=0)
         self._frame.columnconfigure(1, minsize=400, weight=1)
-
-

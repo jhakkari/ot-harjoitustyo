@@ -1,4 +1,6 @@
+import sqlite3
 from db_connection import get_database_connection
+
 
 class SnippetRepository:
     """Koodinpätkiin liittyvistä tietokantaoperaatioista vastaava luokka.
@@ -27,9 +29,9 @@ class SnippetRepository:
 
         try:
             sql = """INSERT INTO snippets (user_id, content, created_at) VALUES (:user_id, :content, DATETIME('now'))"""
-            self._db.execute(sql, {"user_id":user_id, "content":content})
+            self._db.execute(sql, {"user_id": user_id, "content": content})
             self._db_connection.commit()
-        except:
+        except sqlite3.DatabaseError:
             return False
         return True
 
@@ -45,9 +47,9 @@ class SnippetRepository:
 
         try:
             sql = """DELETE FROM snippets WHERE id=:id"""
-            self._db.execute(sql, {"id":snippet_id})
+            self._db.execute(sql, {"id": snippet_id})
             self._db.connection.commit()
-        except:
+        except sqlite3.DatabaseError:
             return False
         return True
 
@@ -62,7 +64,7 @@ class SnippetRepository:
         """
 
         sql = """SELECT id, user_id, content, created_at FROM snippets WHERE user_id=:user_id ORDER BY created_at DESC"""
-        results = self._db.execute(sql, {"user_id":user_id}).fetchall()
+        results = self._db.execute(sql, {"user_id": user_id}).fetchall()
         if not results:
             return None
         return results
@@ -78,7 +80,7 @@ class SnippetRepository:
         """
 
         sql = """DELETE FROM snippets WHERE user_id=:user_id"""
-        self._db.execute(sql, {"user_id":user_id})
+        self._db.execute(sql, {"user_id": user_id})
         self._db.connection.commit()
         return True
 
