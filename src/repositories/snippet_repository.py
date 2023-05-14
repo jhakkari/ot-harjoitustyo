@@ -57,7 +57,7 @@ class SnippetRepository:
         Returns:
             Lista koodinpätkistä tietokantariveinä. Muussa tapauksessa None.
         """
-        sql = """SELECT id, user_id, content, created_at FROM snippets WHERE user_id=:user_id"""
+        sql = """SELECT id, user_id, content, created_at FROM snippets WHERE user_id=:user_id ORDER BY created_at DESC"""
         results = self._db.execute(sql, {"user_id":user_id}).fetchall()
         if not results:
             return None
