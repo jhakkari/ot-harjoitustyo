@@ -18,3 +18,7 @@
 ### Viikko 6
 - Käyttöliittymän koodin selkeyttämistä
 - Käyttäjä voi poistaa tallentamiaan koodinpätkiä
+
+### Viikko 7
+- Käyttäjällä on mahdollisuus poistaa käyttäjätilinsä tietoineen
+- Graafisen käyttöliittymän lopullinen versio

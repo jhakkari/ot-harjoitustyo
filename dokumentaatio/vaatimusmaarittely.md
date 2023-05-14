@@ -9,22 +9,18 @@ Sovellusta voi käyttää usealla käyttäjällä, jolloin kaikilla on henkilök
 
 ### Ennen kirjautumista
 
-- (Valmis) Käyttäjä voi luoda sovellukseen uuden käyttäjätunnuksen. Käyttäjätunnuksen ja salasanan pituus väh. 1 merkki
-- (Valmis) Sovellukseen kirjautuminen oikeilla tunnuksilla
-- (Valmis) sovellus ilmoittaa, mikäli käyttäjätunnuksen luonnissa tai sisäänkirjautumisessa on virheitä
+- Käyttäjä voi luoda sovellukseen uuden käyttäjätunnuksen.
+    - Käyttäjätunnuksen tulee olla uniikki.
+    - Käyttäjätunnuksen ja salasanan pituus väh. 1 merkki
+- käyttäjä voi kirjautua sovellukseen aiemmin luoduilla, oikeilla tunnuksilla.
+- Sovellus ilmoittaa, mikäli käyttäjätunnuksen luonnissa tai sisäänkirjautumisessa on virheitä
 
 ### Kirjautumisen jälkeen
 
-- (Valmis) Käyttäjä näkee sovelluksen etusivulla tallentamansa koodinpätkät
-- (valmis) Käyttäjä voi tallentaa uuden koodinpätkän
-- (Valmis) Käyttäjä voi kopioida haluamansa koodinpätkän leikepöydälle napin painalluksella
-- (Valmis) Käyttäjä voi poistaa tallentamansa koodinpätkän
-- (Valmis) Käyttäjä voi kirjautua ulos järjestelmästä
-
-## Jatkokehitysideoita
-
-- Olemassa olevien koodinpätkien muokkaus
-- Tallennettujen tietojen esitys niiden tarpeellisuuden perusteella (eniten käytetty ensin)
-- Kansioiden luominen
-- Koodinpätkien järjestäminen kansioihin
-- Koodinpätkien jakaminen eri käyttäjien välillä
+- Käyttäjä näkee sovelluksen etusivulla tallentamansa koodinpätkät
+- Käyttäjä voi tallentaa uuden, tekstimuotoisen koodinpätkän
+    - Käyttäjän tietokoneen leikepöydän sisältö kopioidaan automaattisesti muokattavaksi
+- Käyttäjä voi kopioida haluamansa koodinpätkän leikepöydälle napin painalluksella
+- Käyttäjä voi poistaa tallentamansa koodinpätkän
+- Käyttäjä voi kirjautua ulos järjestelmästä
+- Käyttäjä voi poistaa käyttäjätunnuksensa ja kaiken sovelluksen tallentaman datan.

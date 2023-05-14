@@ -33,7 +33,7 @@ Sovellus käynnistyy kirjautumisnäkymään:
 ![Pakkauskaavio](./kuvat/login.png)
 
 
-Kirjautuminen onnistuu olemassaolevalla käyttäjätunnuksella ja salasanalla, sekä painamalla "Login"-näppäintä.
+Kirjautuminen onnistuu olemassa olevalla käyttäjätunnuksella ja salasanalla, sekä painamalla "Login"-näppäintä.
 
 ## Uuden käyttäjän rekisteröinti
 
