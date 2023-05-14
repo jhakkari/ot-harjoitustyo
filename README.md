@@ -12,7 +12,11 @@
 
 [Arkkitehtuuri](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[Testausdokumentti](https://github.com/jhakkari/ot-harjoitustyo/blob/master/dokumentaatio/testausdokumentti.md)
+
 ## Releaset
+
+[Loppupalautus](https://github.com/jhakkari/ot-harjoitustyo/releases/tag/viikko7)
 
 [Viikko 6 release](https://github.com/jhakkari/ot-harjoitustyo/releases/tag/viikko6)
 
